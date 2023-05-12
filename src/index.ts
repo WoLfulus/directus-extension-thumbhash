@@ -136,11 +136,26 @@ export default defineHook<HookConfig>(async function (
       return;
     }
 
+    let resize = {
+      width:
+        file.width > file.height
+          ? 100
+          : file.width == file.height
+          ? 100
+          : undefined,
+      height:
+        file.height > file.width
+          ? 100
+          : file.width == file.height
+          ? 100
+          : undefined,
+    };
+
     const asset = await assets.getAsset(file.id, {
       key: undefined,
       withoutEnlargement: true,
       format: "webp",
-      width: 320,
+      ...resize,
     });
 
     const chunks: Buffer[] = [];
