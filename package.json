@@ -1,0 +1,77 @@
+{
+  "name": "directus-extension-thumbhash",
+  "description": "Directus ThumbHash Extension",
+  "icon": "extension",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WoLfulus/directus-extension-thumbhash"
+  },
+  "author": {
+    "name": "WoLfulus",
+    "email": "wolfulus@gmail.com"
+  },
+  "files": [
+    "dist/index.js",
+    "src/index.ts",
+    "LICENSE",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-hook"
+  ],
+  "directus:extension": {
+    "type": "hook",
+    "path": "./dist/dist/index.js",
+    "source": "./src/index.ts",
+    "host": "10.0.0"
+  },
+  "scripts": {
+    "build": "directus-extension build && pnpm build:pkg && pnpm run /copy:.*/",
+    "build:pkg": "wtx package prepare",
+    "build:dev": "directus-extension build --no-minify && wtx package prepare && pnpm copy:src",
+    "copy:src": "wtx files copy --source ./src --target ./dist/src",
+    "copy:info": "wtx files copy --source.base ./ --source.files {README.md,LICENSE} --target ./dist/",
+    "dev": "nodemon --watch src/ -e ts --exec \"pnpm build:dev\""
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "10.0.0",
+    "@directus/types": "10.0.0",
+    "@types/node": "^20.1.2",
+    "@wolfpkgs/files": "^0.1.5",
+    "@wolfpkgs/package": "^0.1.5",
+    "@wolfpkgs/pnpm": "^0.1.5",
+    "@wolfpkgs/toolbox": "^0.1.5",
+    "@wolfpkgs/tsconfig": "^0.1.4",
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "@directus/api": "10.0.0",
+    "sharp": "^0.31.3"
+  },
+  "peerDependenciesMeta": {
+    "@directus/api": {
+      "optional": false
+    }
+  },
+  "dependencies": {
+    "thumbhash": "^0.1.1"
+  },
+  "publishConfig": {
+    "directory": "dist",
+    "linkDirectory": false,
+    "overrides": {
+      "directus:extension": {
+        "type": "hook",
+        "path": "./dist/index.js",
+        "source": "./src/index.ts",
+        "host": "10.0.0"
+      }
+    }
+  }
+}
