@@ -1,8 +1,9 @@
 {
   "name": "directus-extension-thumbhash",
+  "private": true,
   "description": "Directus ThumbHash Extension",
   "icon": "extension",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/WoLfulus/directus-extension-thumbhash"
@@ -39,23 +40,23 @@
     "dev": "nodemon --watch src/ -e ts --exec \"pnpm build:dev\""
   },
   "devDependencies": {
-    "@directus/extensions-sdk": "10.0.0",
-    "@directus/types": "10.0.0",
-    "@types/node": "^20.1.2",
-    "@wolfpkgs/files": "^0.1.5",
-    "@wolfpkgs/package": "^0.1.5",
-    "@wolfpkgs/pnpm": "^0.1.5",
-    "@wolfpkgs/toolbox": "^0.1.5",
-    "@wolfpkgs/tsconfig": "^0.1.4",
+    "@directus/api": "11.1.0",
+    "@directus/extensions-sdk": "10.1.4",
+    "@directus/types": "10.1.1",
+    "@types/node": "^20.3.1",
+    "@wolfpkgs/files": "^0.2.9",
+    "@wolfpkgs/package": "^0.2.10",
+    "@wolfpkgs/pnpm": "^0.2.10",
+    "@wolfpkgs/toolbox": "^0.2.9",
+    "@wolfpkgs/tsconfig": "^0.2.0",
     "nodemon": "^2.0.22",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.3"
   },
   "peerDependencies": {
-    "@directus/api": "10.0.0",
     "sharp": "^0.31.3"
   },
   "peerDependenciesMeta": {
-    "@directus/api": {
+    "sharp": {
       "optional": false
     }
   },
@@ -66,11 +67,12 @@
     "directory": "dist",
     "linkDirectory": false,
     "overrides": {
+      "private": false,
       "directus:extension": {
         "type": "hook",
         "path": "./dist/index.js",
         "source": "./src/index.ts",
-        "host": "10.0.0"
+        "host": "10.3.0"
       }
     }
   }

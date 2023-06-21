@@ -152,10 +152,19 @@ export default defineHook<HookConfig>(async function (
     };
 
     const asset = await assets.getAsset(file.id, {
-      key: undefined,
-      withoutEnlargement: true,
-      format: "webp",
-      ...resize,
+      transformationParams: {
+        key: undefined,
+        withoutEnlargement: true,
+        format: "webp",
+        ...resize,
+      },
+      // Keep for backwards compatibility
+      ...{
+        key: undefined,
+        withoutEnlargement: true,
+        format: "webp",
+        ...resize,
+      },
     });
 
     const chunks: Buffer[] = [];
