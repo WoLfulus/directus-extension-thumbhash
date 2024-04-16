@@ -3,7 +3,7 @@
   "private": true,
   "description": "Directus ThumbHash Extension",
   "icon": "extension",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/WoLfulus/directus-extension-thumbhash"
@@ -53,7 +53,7 @@
     "typescript": "^5.1.3"
   },
   "peerDependencies": {
-    "sharp": "^0.31.3"
+    "sharp": "^0.33"
   },
   "peerDependenciesMeta": {
     "sharp": {
